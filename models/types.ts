@@ -1,3 +1,9 @@
+export enum TaddyType {
+  COMICSERIES = "COMICSERIES",
+  COMICISSUE = "COMICISSUE",
+  COMICSTORY = "COMICSTORY",
+}
+
 export enum ComicSeriesType {
   WEBTOON = "WEBTOON",
   MANGA = "MANGA",
@@ -10,5 +16,5 @@ export enum ComicSeriesType {
 }
 
 export function getPrettySeriesType(seriesType: ComicSeriesType): string {
-  return seriesType.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).join(" ")
+  return seriesType.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
 }

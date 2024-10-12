@@ -21,7 +21,7 @@ export function getPrettyRoleName(role: ComicSeriesRole): string {
     case ComicSeriesRole.ARTIST_LETTERER:
       return "Letterer (Artist)"
     default:
-      return role.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).slice(1).join(" ")
+      return role.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).slice(1).join(" ")
   }
 }
 

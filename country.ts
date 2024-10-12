@@ -298,6 +298,6 @@ export function getPrettyCountry(country: Country): string {
     case Country.SAINT_HELENA_ASCENSION_AND_TRISTAN_DA_CUNHA:
       return "Saint Helena, Ascension and Tristan da Cunha"
     default:
-      return country.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).join(" ")
+      return country.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
   }
 }

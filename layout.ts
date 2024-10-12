@@ -6,5 +6,5 @@ enum LayoutType {
 }
 
 export function getPrettyLayoutType(layoutType: LayoutType): string {
-  return layoutType.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).join(" ")
+  return layoutType.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
 }

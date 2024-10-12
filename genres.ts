@@ -39,6 +39,6 @@ export function getPrettyGenre(genre: Genre): string {
     case Genre.COMICSERIES_SCI_FI:
       return "Sci-Fi"
     default:
-      return genre.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).slice(1).join(" ")
+      return genre.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1).toLowerCase()} ).slice(1).join(" ")
   }
 }

@@ -34,7 +34,7 @@ export function getPrettyLinkType(linkType: LinkType): string {
     case "KO_FI":
       return "Ko-fi"
     default:
-      return linkType.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase() }).join(" ")
+      return linkType.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase() }).join(" ")
   }
 }
 

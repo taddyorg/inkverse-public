@@ -202,5 +202,5 @@ const primaryLanguagesSet: Set<Language> = new Set(primaryLanguages)
 export const allLanguages: Language[] = [...primaryLanguages, ...allLanguagesSorted.filter(lang => !primaryLanguagesSet.has(lang))]
 
 export function getPrettyLanguage(language: Language): string {
-  return language.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).join(" ")
+  return language.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
 }

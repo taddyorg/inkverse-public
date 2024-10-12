@@ -28,6 +28,6 @@ export function getPrettyRating(rating: Rating): string {
     case Rating.COMICSERIES_ADULTS:
       return "Adults (Ages 18+)"
     default:
-      return rating.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).slice(1).join(" ")
+      return rating.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).slice(1).join(" ")
   }
 }

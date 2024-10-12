@@ -8,5 +8,5 @@ export enum ComicSeriesStatus {
 }
 
 export function getPrettySeriesStatus(seriesStatus: ComicSeriesStatus): string {
-  return seriesStatus.split("_").map(word => { return word[0].toUpperCase() + word.slice(1).toLowerCase()} ).join(" ")
+  return seriesStatus.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
 }
