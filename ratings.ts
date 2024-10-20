@@ -1,31 +1,24 @@
-export enum Rating {
-  COMICSERIES_BABY = "COMICSERIES_BABY",
-  COMICSERIES_KIDS = "COMICSERIES_KIDS",
-  COMICSERIES_TEENS = "COMICSERIES_TEENS",
-  COMICSERIES_MATURE_TEENS = "COMICSERIES_MATURE_TEENS",
-  COMICSERIES_ADULTS = "COMICSERIES_ADULTS",
-  COMICSERIES_EROTICA = "COMICSERIES_EROTICA",
-}
+import { ContentRating } from "../shared/graphql/types.js";
 
 export const allowedRatingsForType = new Set([
-  Rating.COMICSERIES_BABY,
-  Rating.COMICSERIES_KIDS,
-  Rating.COMICSERIES_TEENS,
-  Rating.COMICSERIES_MATURE_TEENS,
-  Rating.COMICSERIES_ADULTS,
+  ContentRating.ComicseriesBaby,
+  ContentRating.ComicseriesKids,
+  ContentRating.ComicseriesTeens,
+  ContentRating.ComicseriesMatureTeens,
+  ContentRating.ComicseriesAdults,
 ])
 
-export function getPrettyRating(rating: Rating): string {
+export function getPrettyRating(rating: ContentRating): string {
   switch(rating){
-    case Rating.COMICSERIES_BABY:
+    case ContentRating.ComicseriesBaby:
       return "Baby (Ages 0-5)"
-    case Rating.COMICSERIES_KIDS:
+    case ContentRating.ComicseriesKids:
       return "Kids (Ages 6+)"
-    case Rating.COMICSERIES_TEENS:
+    case ContentRating.ComicseriesTeens:
       return "Teens (Ages 13+)"
-    case Rating.COMICSERIES_MATURE_TEENS:
+    case ContentRating.ComicseriesMatureTeens:
       return "Mature Teens (Ages 15+)"
-    case Rating.COMICSERIES_ADULTS:
+    case ContentRating.ComicseriesAdults:
       return "Adults (Ages 18+)"
     default:
       return rating.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).slice(1).join(" ")

@@ -1,12 +1,5 @@
-export enum ComicSeriesStatus {
-  ONGOING = "ONGOING",
-  HIATUS = "HIATUS",
-  COMPLETED = "COMPLETED",
-  CANCELLED = "CANCELLED",
-  ANNOUNCED = "ANNOUNCED",
-  UNDER_REVISION = "UNDER_REVISION",
-}
+import { SeriesStatus } from "../shared/graphql/types.js";
 
-export function getPrettySeriesStatus(seriesStatus: ComicSeriesStatus): string {
+export function getPrettySeriesStatus(seriesStatus: SeriesStatus): string {
   return seriesStatus.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
 }

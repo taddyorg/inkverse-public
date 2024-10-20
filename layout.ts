@@ -1,10 +1,5 @@
-enum LayoutType {
-  VERTICAL_SCROLL_TOP_TO_BOTTOM = "VERTICAL_SCROLL_TOP_TO_BOTTOM",
-  RIGHT_TO_LEFT = "RIGHT_TO_LEFT",
-  LEFT_TO_RIGHT = "LEFT_TO_RIGHT",
-  PAGE = "PAGE",
-}
+import { ComicSeriesType } from '../shared/graphql/types.js';
 
-export function getPrettyLayoutType(layoutType: LayoutType): string {
+export function getPrettyLayoutType(layoutType: ComicSeriesType): string {
   return layoutType.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
 }

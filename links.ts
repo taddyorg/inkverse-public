@@ -1,33 +1,6 @@
-const HTTPS: string = "https://";
+import { LinkType } from '../shared/graphql/types.js';
 
-export enum LinkType {
-  INSTAGRAM = "INSTAGRAM",
-  YOUTUBE = "YOUTUBE",
-  TIKTOK = "TIKTOK",
-  PATREON = "PATREON",
-  KO_FI = "KO_FI", 
-  EMAIL = "EMAIL",
-  TWITTER = "TWITTER",
-  MASTODON = "MASTODON",
-  FACEBOOK = "FACEBOOK",
-  WEBSITE = "WEBSITE",
-  MERCH_STORE = "MERCH_STORE",
-  TWITCH = "TWITCH",
-  SNAPCHAT = "SNAPCHAT",
-  REDDIT = "REDDIT",
-  DISCORD = "DISCORD",
-  TELEGRAM = "TELEGRAM",
-  PINTEREST = "PINTEREST",
-  TUMBLR = "TUMBLR",
-  SPOTIFY = "SPOTIFY",
-  SOUNDCLOUD = "SOUNDCLOUD",
-  BANDCAMP = "BANDCAMP",
-  VIMEO = "VIMEO",
-  WECHAT = "WECHAT",
-  WHATSAPP = "WHATSAPP",
-  LINKTREE = "LINKTREE",
-  ETSY = "ETSY",
-}
+const HTTPS: string = "https://";
 
 export function getPrettyLinkType(linkType: LinkType): string {
   switch (linkType) {
@@ -40,56 +13,56 @@ export function getPrettyLinkType(linkType: LinkType): string {
 
 export function getLinkBase(linkType: LinkType): string | undefined {
   switch (linkType) {
-    case "INSTAGRAM":
+    case LinkType.Instagram:
       return "instagram.com/"
-    case "YOUTUBE":
+    case LinkType.Youtube:
       return "youtube.com/"
-    case "TIKTOK":
+    case LinkType.Tiktok:
       return "tiktok.com/@"
-    case "PATREON":
+    case LinkType.Patreon:
       return "patreon.com/"
-    case "KO_FI":
+    case LinkType.KoFi:
       return "ko-fi.com/"
-    case "TWITTER":
+    case LinkType.Twitter:
       return "twitter.com/"
-    case "FACEBOOK":
+    case LinkType.Facebook:
       return "facebook.com/"
-    case "TWITCH":
+    case LinkType.Twitch:
       return "twitch.tv/"
-    case "SNAPCHAT":
+    case LinkType.Snapchat:
       return "snapchat.com/add/"
-    case "REDDIT":
+    case LinkType.Reddit:
       return "reddit.com/r/"
-    case "DISCORD":
+    case LinkType.Discord:
       return "discord.gg/"
-    case "TELEGRAM":
+    case LinkType.Telegram:
       return "t.me/"
-    case "PINTEREST":
+    case LinkType.Pinterest:
       return "pinterest.com/"
-    case "TUMBLR":
+    case LinkType.Tumblr:
       return "tumblr.com/"
-    case "SPOTIFY":
+    case LinkType.Spotify:
       return "open.spotify.com/"
-    case "SOUNDCLOUD":
+    case LinkType.Soundcloud:
       return "soundcloud.com/"
-    case "BANDCAMP":
+    case LinkType.Bandcamp:
       return "bandcamp.com/"
-    case "VIMEO":
+    case LinkType.Vimeo:
       return "vimeo.com/"
-    case "WECHAT":
+    case LinkType.Wechat:
       return "wechat.com/"
-    case "WHATSAPP":
+    case LinkType.Whatsapp:
       return "chat.whatsapp.com/"
-    case "WEBSITE":
-    case "MERCH_STORE":
+    case LinkType.Website:
+    case LinkType.MerchStore:
       return HTTPS
-    case "MASTODON":
+    case LinkType.Mastodon:
       return "@"
-    case "LINKTREE":
+    case LinkType.Linktree:
       return "linktr.ee/"
-    case "ETSY":
+    case LinkType.Etsy:
       return "etsy.com/shop/"
-    case "EMAIL":
+    case LinkType.Email:
     default:
       return 
   }
@@ -97,8 +70,8 @@ export function getLinkBase(linkType: LinkType): string | undefined {
 
 export function getBaseLinkForSchema(linkType: LinkType, linkValue = ''): string | undefined {
   const linkbase = getLinkBase(linkType);
-  if (linkType === LinkType.EMAIL) { return }
-  else if (linkType === LinkType.MASTODON) {
+  if (linkType === LinkType.Email) { return }
+  else if (linkType === LinkType.Mastodon) {
     const mastodonSplitValues = linkValue.split("@")
     if (mastodonSplitValues.length !== 2) { return }
     return `${HTTPS}${mastodonSplitValues[1]}/@`
@@ -107,7 +80,7 @@ export function getBaseLinkForSchema(linkType: LinkType, linkValue = ''): string
 }
 
 export function getLinkValueForSchema(linkType: LinkType, linkValue: string): string | undefined {
-  if (linkType === LinkType.MASTODON) {
+  if (linkType === LinkType.Mastodon) {
     const mastodonSplitValues = linkValue.split("@")
     if (mastodonSplitValues.length !== 2) { return }
     return mastodonSplitValues[0];
@@ -116,8 +89,8 @@ export function getLinkValueForSchema(linkType: LinkType, linkValue: string): st
 
 export function getFullLink(linkType: LinkType, linkValue: string): string | undefined {
   const linkbase = getLinkBase(linkType)
-  if (linkType === LinkType.EMAIL) return `mailto:${linkValue}`
-  else if (linkType === LinkType.MASTODON) {
+  if (linkType === LinkType.Email) return `mailto:${linkValue}`
+  else if (linkType === LinkType.Mastodon) {
     const mastodonSplitValues = linkValue.split("@")
     if (mastodonSplitValues.length !== 2) { return }
     return `${HTTPS}${mastodonSplitValues[0]}/@${mastodonSplitValues[1]}`
@@ -125,4 +98,4 @@ export function getFullLink(linkType: LinkType, linkValue: string): string | und
   else return `${HTTPS}${linkbase}${linkValue}`
 }
 
-export const skipLinkBaseSet = new Set(["EMAIL"])
+export const skipLinkBaseSet = new Set([LinkType.Email])
