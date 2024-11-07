@@ -76,14 +76,14 @@ export function getLinkBase(linkType: LinkType): string | undefined {
   }
 }
 
-export function getBaseLinkForSchema(linkType: LinkType, linkValue = ''): string | undefined {
+export function getBaseLinkForSchema(linkType: LinkType, linkValue = ''): string {
   const linkbase = getLinkBase(linkType);
-  if (linkType === LinkType.Email) { return }
+  if (linkType === LinkType.Email) { return ''}
   else if (linkType === LinkType.Mastodon) {
     const mastodonSplitValues = linkValue.split("@")
-    if (mastodonSplitValues.length !== 2) { return }
+    if (mastodonSplitValues.length !== 2) { return '' }
     return `${HTTPS}${mastodonSplitValues[1]}/@`
-  } else if (linkbase === HTTPS) return linkbase
+  }else if (linkbase === HTTPS) return linkbase
   else return `${HTTPS}${linkbase}`
 }
 
@@ -92,7 +92,7 @@ export function getLinkValueForSchema(linkType: LinkType, linkValue: string): st
     const mastodonSplitValues = linkValue.split("@")
     if (mastodonSplitValues.length !== 2) { return }
     return mastodonSplitValues[0];
-  } else { return linkValue; }
+  }else { return linkValue; }
 }
 
 export function getFullLink(linkType: LinkType, linkValue: string): string | undefined {
