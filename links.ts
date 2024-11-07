@@ -2,6 +2,14 @@ import { LinkType } from '../shared/graphql/types.js';
 
 const HTTPS: string = "https://";
 
+const allLinkTypesSet = new Set(Object.values(LinkType))
+
+export function safeLinkType(type?: string): LinkType | null {
+  if (!type) return null;
+  else if (!allLinkTypesSet.has(type as LinkType)) return null;
+  return type as LinkType;
+}
+
 export function getPrettyLinkType(linkType: LinkType): string {
   switch (linkType) {
     case "KO_FI":

@@ -1,8 +1,10 @@
-import { Country } from '../shared/graphql/types.js';
+import { Country, Language } from '../shared/graphql/types.js';
 
 export const rawAllCountries: Country[] = Object.values(Country);
 
 const allCountriesSorted: Country[] = rawAllCountries.sort()
+
+const allCountriesSet = new Set(allCountriesSorted)
 
 const primaryCountries: Country[] = [
   Country.UnitedStatesOfAmerica,
@@ -23,6 +25,12 @@ const primaryCountries: Country[] = [
 const primaryCountriesSet: Set<Country> = new Set(primaryCountries)
 
 export const allCountries: Country[] = [...primaryCountries, ...allCountriesSorted.filter(country => !primaryCountriesSet.has(country))]
+
+export function safeCountry(country: Country | null): Country | null {
+  if (!country) return null;
+  else if (!allCountriesSet.has(country)) return null;
+  return country;
+}
 
 export function getPrettyCountry(country: Country): string {
   switch(country){

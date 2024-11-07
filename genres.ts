@@ -14,3 +14,10 @@ export function getPrettyGenre(genre: Genre): string {
       return genre.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1).toLowerCase()} ).slice(1).join(" ")
   }
 }
+
+export const GenreSet = new Set(Object.values(Genre));
+
+export function safeGenresArray(genres?: string[]): Genre[] | null {
+  if (!genres || !Array.isArray(genres)) return null;
+  return genres.filter(genre => GenreSet.has(genre as Genre)).map(genre => genre as Genre);
+}

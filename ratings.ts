@@ -8,6 +8,14 @@ export const allowedRatingsForType = new Set([
   ContentRating.ComicseriesAdults,
 ])
 
+const allRatingsSet: Set<ContentRating> = new Set(Object.values(ContentRating))
+
+export function safeContentRating(rating: ContentRating | null): ContentRating | null {
+  if (!rating) return null;
+  else if (!allRatingsSet.has(rating)) return null;
+  return rating;
+}
+
 export function getPrettyRating(rating: ContentRating): string {
   switch(rating){
     case ContentRating.ComicseriesBaby:

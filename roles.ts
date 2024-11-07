@@ -1,5 +1,13 @@
 import { ContentRole } from "../shared/graphql/types.js";
 
+const allContentRolesSet = new Set(Object.values(ContentRole));
+
+export function safeContentRole(role: string | undefined): ContentRole | null {
+  if (!role) return null;
+  else if (!allContentRolesSet.has(role as ContentRole)) return null;
+  return role as ContentRole;
+}
+
 export function getPrettyRoleName(role: ContentRole): string {
   switch(role){
     case ContentRole.ComicseriesArtistPenciler:
