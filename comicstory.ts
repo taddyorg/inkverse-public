@@ -4,11 +4,11 @@ enum ComicStoryImageType {
   STORY = "story",
 }
 
-export const getStoryImageUrl = (story: ComicStory, token?: string): string | null => {
+export const getStoryImageUrl = (storyImageAsString: string | undefined, token?: string): string | null => {
   try {
-    if (!story.storyImageAsString) { throw new Error('getStoryImageUrl - storyImageAsString is null'); }
+    if (!storyImageAsString) { throw new Error('getStoryImageUrl - storyImageAsString is null'); }
   
-    const storyImage = JSON.parse(story.storyImageAsString) as Record<string, string>;
+    const storyImage = JSON.parse(storyImageAsString) as Record<string, string>;
     const baseUrl = storyImage['base_url'];
     const imagePath = storyImage[ComicStoryImageType.STORY];
 

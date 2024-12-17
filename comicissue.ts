@@ -11,11 +11,11 @@ enum ComicIssueImageVariant {
   SMALL = "sm",
 }
 
-export const getBannerImageUrl = (issue: ComicIssue, variant: ComicIssueImageVariant | undefined = ComicIssueImageVariant.MEDIUM): string | null => {
+export const getBannerImageUrl = (bannerImageAsString: string | undefined, variant: ComicIssueImageVariant | undefined = ComicIssueImageVariant.MEDIUM): string | null => {
   try {
-    if (!issue.bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
+    if (!bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
 
-    const bannerImage = JSON.parse(issue.bannerImageAsString) as Record<string, string>;
+    const bannerImage = JSON.parse(bannerImageAsString) as Record<string, string>;
 
     const baseUrl = bannerImage['base_url'];
     const imagePath = bannerImage[ComicIssueImageType.BANNER + `_${variant}`];
@@ -29,11 +29,11 @@ export const getBannerImageUrl = (issue: ComicIssue, variant: ComicIssueImageVar
   }
 };
 
-export const getThumbnailImageUrl = (issue: ComicIssue): string | null => {
+export const getThumbnailImageUrl = (thumbnailImageAsString: string | undefined): string | null => {
   try {
-    if (!issue.thumbnailImageAsString) { throw new Error('getThumbnailImageUrl - thumbnailImageAsString is null'); }
+    if (!thumbnailImageAsString) { throw new Error('getThumbnailImageUrl - thumbnailImageAsString is null'); }
 
-    const thumbnailImage = JSON.parse(issue.thumbnailImageAsString) as Record<string, string>;
+    const thumbnailImage = JSON.parse(thumbnailImageAsString) as Record<string, string>;
 
     const baseUrl = thumbnailImage['base_url'];
     const imagePath = thumbnailImage[ComicIssueImageType.THUMBNAIL];

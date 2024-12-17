@@ -12,11 +12,11 @@ enum ComicSeriesImageVariant {
   SMALL = "sm",
 }
 
-export const getCoverImageUrl = (series: ComicSeries, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
+export const getCoverImageUrl = (coverImageAsString: string | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
   try {
-    if (!series.coverImageAsString) { throw new Error('getCoverImageUrl - coverImageAsString is null'); }
+    if (!coverImageAsString) { throw new Error('getCoverImageUrl - coverImageAsString is null'); }
   
-    const coverImage = JSON.parse(series.coverImageAsString) as Record<string, string>;
+    const coverImage = JSON.parse(coverImageAsString) as Record<string, string>;
     const baseUrl = coverImage['base_url'];
     const imagePath = coverImage[ComicSeriesImageType.COVER + `_${variant}`];
 
@@ -29,11 +29,11 @@ export const getCoverImageUrl = (series: ComicSeries, variant: ComicSeriesImageV
   }
 };
 
-export const getBannerImageUrl = (series: ComicSeries, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
+export const getBannerImageUrl = (bannerImageAsString: string | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
   try {
-    if (!series.bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
+    if (!bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
   
-    const bannerImage = JSON.parse(series.bannerImageAsString) as Record<string, string>;
+    const bannerImage = JSON.parse(bannerImageAsString) as Record<string, string>;
     const baseUrl = bannerImage['base_url'];
     const imagePath = bannerImage[ComicSeriesImageType.BANNER + `_${variant}`];
 
@@ -46,11 +46,11 @@ export const getBannerImageUrl = (series: ComicSeries, variant: ComicSeriesImage
   }
 };
 
-export const getThumbnailImageUrl = (series: ComicSeries): string | null => {
+export const getThumbnailImageUrl = (thumbnailImageAsString: string | undefined): string | null => {
   try {
-    if (!series.thumbnailImageAsString) { throw new Error('getThumbnailImageUrl - thumbnailImageAsString is null'); }
+    if (!thumbnailImageAsString) { throw new Error('getThumbnailImageUrl - thumbnailImageAsString is null'); }
   
-    const thumbnailImage = JSON.parse(series.thumbnailImageAsString) as Record<string, string>;
+    const thumbnailImage = JSON.parse(thumbnailImageAsString) as Record<string, string>;
     const baseUrl = thumbnailImage['base_url'];
     const imagePath = thumbnailImage[ComicSeriesImageType.THUMBNAIL];
 
