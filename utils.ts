@@ -1,4 +1,4 @@
-const inkverseWebsiteUrl = process.env.NODE_ENV === 'production' 
+export const inkverseWebsiteUrl = process.env.NODE_ENV === 'production' 
 	? 'https://inkverse.co' 
 	: 'http://inkverse.test:8082';
 
@@ -30,15 +30,41 @@ export enum InkverseUrlType {
   CREATOR = 'creator'
 }
 
-export function getInkverseUrl(type: InkverseUrlType, id?: string, shortUrl?: string, baseUrl = inkverseWebsiteUrl){
-  switch(type){
+type InkverseUrlParams = {
+  shortUrl?: string | null,
+  name?: string | null,
+  uuid?: string | null
+}
+
+export function getInkverseUrl(
+  type: InkverseUrlType,
+  params: InkverseUrlParams
+): string | null {
+  switch (type) {
     case InkverseUrlType.COMICSERIES:
-      return `${baseUrl}/comics/${shortUrl}`
-    case InkverseUrlType.COMICISSUE:
-      return `${baseUrl}/comics/${shortUrl}/${id}`
+      if (!params.shortUrl) return null;
+      return `/comics/${params.shortUrl}`;
+
     case InkverseUrlType.CREATOR:
-      return `${baseUrl}/creators/${shortUrl}`
-    default:
-      throw new Error(`getInkverseUrl: type ${type} is not supported`)
+      if (!params.shortUrl) return null;
+      return `/creators/${params.shortUrl}`;
+
+    case InkverseUrlType.COMICISSUE:
+      if (!params.shortUrl || !params.name || !params.uuid) return null;
+      
+      const slug = params.name
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^a-zA-Z0-9-_]/g, '')
+        .replace(/-+/g, '-')
+        .slice(0, 80)
+        .toLowerCase();
+
+      const safeUuid = params.uuid.replace(/-/g, '');
+
+      return `/comics/${params.shortUrl}/${slug}-${safeUuid}`;
+
+  default:
+    throw new Error('getInkverseLink - type is invalid');
   }
 }

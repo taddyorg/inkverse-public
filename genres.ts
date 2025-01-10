@@ -2,13 +2,13 @@ import { Genre } from '../shared/graphql/types.js';
 
 export function getPrettyGenre(genre: Genre): string {
   switch(genre){
-    case Genre.ComicseriesLgbtq:
+    case Genre.COMICSERIES_LGBTQ:
       return "LGBTQ+"
-    case Genre.ComicseriesBl:
+    case Genre.COMICSERIES_BL:
       return "BL"
-    case Genre.ComicseriesGl:
+    case Genre.COMICSERIES_GL:
       return "GL"
-    case Genre.ComicseriesSciFi:
+    case Genre.COMICSERIES_SCI_FI:
       return "Sci-Fi"
     default:
       return genre.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1).toLowerCase()} ).slice(1).join(" ")

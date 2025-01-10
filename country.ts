@@ -7,19 +7,19 @@ const allCountriesSorted: Country[] = rawAllCountries.sort()
 const allCountriesSet = new Set(allCountriesSorted)
 
 const primaryCountries: Country[] = [
-  Country.UnitedStatesOfAmerica,
-  Country.UnitedKingdom,
-  Country.Canada,
-  Country.Australia,
-  Country.Germany,
-  Country.Spain,
-  Country.France,
-  Country.KoreaSouth,
-  Country.Japan,
-  Country.China,
-  Country.Brazil,
-  Country.India,
-  Country.Nigeria,
+  Country.UNITED_STATES_OF_AMERICA,
+  Country.UNITED_KINGDOM,
+  Country.CANADA,
+  Country.AUSTRALIA,
+  Country.GERMANY,
+  Country.SPAIN,
+  Country.FRANCE,
+  Country.KOREA_SOUTH,
+  Country.JAPAN,
+  Country.CHINA,
+  Country.BRAZIL,
+  Country.INDIA,
+  Country.NIGERIA,
 ]
 
 const primaryCountriesSet: Set<Country> = new Set(primaryCountries)
@@ -34,27 +34,27 @@ export function safeCountry(country: Country | null): Country | null {
 
 export function getPrettyCountry(country: Country): string {
   switch(country){
-    case Country.UnitedStatesOfAmerica:
+    case Country.UNITED_STATES_OF_AMERICA:
       return "USA"
-    case Country.UnitedKingdom:
+    case Country.UNITED_KINGDOM:
       return "UK"
-    case Country.KoreaSouth:
+    case Country.KOREA_SOUTH:
       return "South Korea"
-    case Country.KoreaNorth:
+    case Country.KOREA_NORTH:
       return "North Korea"
-    case Country.MoldovaTheRepublic:
+    case Country.MOLDOVA_THE_REPUBLIC:
       return "Moldova"
-    case Country.VirginIslandsUs:
+    case Country.VIRGIN_ISLANDS_US:
       return "Virgin Islands (US)"
-    case Country.VirginIslandsBritish:
+    case Country.VIRGIN_ISLANDS_BRITISH:
       return "Virgin Islands (British)"
-    case Country.MinorOutlyingIslandsUs:
+    case Country.MINOR_OUTLYING_ISLANDS_US:
       return "Minor Outlying Islands (US)"
-    case Country.Curacao:
+    case Country.CURACAO:
       return "Curaçao"
-    case Country.SaintHelenaAscensionAndTristanDaCunha:
+    case Country.SAINT_HELENA_ASCENSION_AND_TRISTAN_DA_CUNHA:
       return "Saint Helena, Ascension and Tristan da Cunha"
     default:
-      return country.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
+        return country.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).join(" ")
   }
 }

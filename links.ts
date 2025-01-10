@@ -21,56 +21,56 @@ export function getPrettyLinkType(linkType: LinkType): string {
 
 export function getLinkBase(linkType: LinkType): string | undefined {
   switch (linkType) {
-    case LinkType.Instagram:
+    case LinkType.INSTAGRAM:
       return "instagram.com/"
-    case LinkType.Youtube:
+    case LinkType.YOUTUBE:
       return "youtube.com/"
-    case LinkType.Tiktok:
+    case LinkType.TIKTOK:
       return "tiktok.com/@"
-    case LinkType.Patreon:
+    case LinkType.PATREON:
       return "patreon.com/"
-    case LinkType.KoFi:
+    case LinkType.KO_FI:
       return "ko-fi.com/"
-    case LinkType.Twitter:
+    case LinkType.TWITTER:
       return "twitter.com/"
-    case LinkType.Facebook:
+    case LinkType.FACEBOOK:
       return "facebook.com/"
-    case LinkType.Twitch:
+    case LinkType.TWITCH:
       return "twitch.tv/"
-    case LinkType.Snapchat:
+    case LinkType.SNAPCHAT:
       return "snapchat.com/add/"
-    case LinkType.Reddit:
+    case LinkType.REDDIT:
       return "reddit.com/r/"
-    case LinkType.Discord:
+    case LinkType.DISCORD:
       return "discord.gg/"
-    case LinkType.Telegram:
+    case LinkType.TELEGRAM:
       return "t.me/"
-    case LinkType.Pinterest:
+    case LinkType.PINTEREST:
       return "pinterest.com/"
-    case LinkType.Tumblr:
+    case LinkType.TUMBLR:
       return "tumblr.com/"
-    case LinkType.Spotify:
+    case LinkType.SPOTIFY:
       return "open.spotify.com/"
-    case LinkType.Soundcloud:
+    case LinkType.SOUNDCLOUD:
       return "soundcloud.com/"
-    case LinkType.Bandcamp:
+    case LinkType.BANDCAMP:
       return "bandcamp.com/"
-    case LinkType.Vimeo:
+    case LinkType.VIMEO:
       return "vimeo.com/"
-    case LinkType.Wechat:
+    case LinkType.WECHAT:
       return "wechat.com/"
-    case LinkType.Whatsapp:
+    case LinkType.WHATSAPP:
       return "chat.whatsapp.com/"
-    case LinkType.Website:
-    case LinkType.MerchStore:
+    case LinkType.WEBSITE:
+    case LinkType.MERCH_STORE:
       return HTTPS
-    case LinkType.Mastodon:
+    case LinkType.MASTODON:
       return "@"
-    case LinkType.Linktree:
+    case LinkType.LINKTREE:
       return "linktr.ee/"
-    case LinkType.Etsy:
+    case LinkType.ETSY:
       return "etsy.com/shop/"
-    case LinkType.Email:
+    case LinkType.EMAIL:
     default:
       return 
   }
@@ -78,8 +78,8 @@ export function getLinkBase(linkType: LinkType): string | undefined {
 
 export function getBaseLinkForSchema(linkType: LinkType, linkValue = ''): string {
   const linkbase = getLinkBase(linkType);
-  if (linkType === LinkType.Email) { return ''}
-  else if (linkType === LinkType.Mastodon) {
+  if (linkType === LinkType.EMAIL) { return ''}
+  else if (linkType === LinkType.MASTODON) {
     const mastodonSplitValues = linkValue.split("@")
     if (mastodonSplitValues.length !== 2) { return '' }
     return `${HTTPS}${mastodonSplitValues[1]}/@`
@@ -88,7 +88,7 @@ export function getBaseLinkForSchema(linkType: LinkType, linkValue = ''): string
 }
 
 export function getLinkValueForSchema(linkType: LinkType, linkValue: string): string | undefined {
-  if (linkType === LinkType.Mastodon) {
+  if (linkType === LinkType.MASTODON) {
     const mastodonSplitValues = linkValue.split("@")
     if (mastodonSplitValues.length !== 2) { return }
     return mastodonSplitValues[0];
@@ -97,8 +97,8 @@ export function getLinkValueForSchema(linkType: LinkType, linkValue: string): st
 
 export function getFullLink(linkType: LinkType, linkValue: string): string | undefined {
   const linkbase = getLinkBase(linkType)
-  if (linkType === LinkType.Email) return `mailto:${linkValue}`
-  else if (linkType === LinkType.Mastodon) {
+  if (linkType === LinkType.EMAIL) return `mailto:${linkValue}`
+  else if (linkType === LinkType.MASTODON) {
     const mastodonSplitValues = linkValue.split("@")
     if (mastodonSplitValues.length !== 2) { return }
     return `${HTTPS}${mastodonSplitValues[0]}/@${mastodonSplitValues[1]}`
@@ -106,4 +106,4 @@ export function getFullLink(linkType: LinkType, linkValue: string): string | und
   else return `${HTTPS}${linkbase}${linkValue}`
 }
 
-export const skipLinkBaseSet = new Set([LinkType.Email])
+export const skipLinkBaseSet = new Set([LinkType.EMAIL])

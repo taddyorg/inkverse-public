@@ -10,13 +10,13 @@ export function safeContentRole(role: string | undefined): ContentRole | null {
 
 export function getPrettyRoleName(role: ContentRole): string {
   switch(role){
-    case ContentRole.ComicseriesArtistPenciler:
+    case ContentRole.COMICSERIES_ARTIST_PENCILER:
       return "Penciler (Artist)"
-    case ContentRole.ComicseriesArtistInker:
+    case ContentRole.COMICSERIES_ARTIST_INKER:
       return "Inker (Artist)"
-    case ContentRole.ComicseriesArtistColorist:
+    case ContentRole.COMICSERIES_ARTIST_COLORIST:
       return "Colorist (Artist)"
-    case ContentRole.ComicseriesArtistLetterer:
+    case ContentRole.COMICSERIES_ARTIST_LETTERER:
       return "Letterer (Artist)"
     default:
       return role.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).slice(1).join(" ")
@@ -25,23 +25,23 @@ export function getPrettyRoleName(role: ContentRole): string {
 
 export function getRoleDescription(role: ContentRole): string {
   switch(role){
-    case ContentRole.ComicseriesArtist:
+    case ContentRole.COMICSERIES_ARTIST:
       return "An individual who creates artwork for the comic."
-    case ContentRole.ComicseriesArtistPenciler:
+    case ContentRole.COMICSERIES_ARTIST_PENCILER:
       return "An individual who draws the primary narrative artwork."
-    case ContentRole.ComicseriesArtistInker:
+    case ContentRole.COMICSERIES_ARTIST_INKER:
       return "An individual who traces over pencil drawings to provide a final line."  
-    case ContentRole.ComicseriesArtistColorist:
+    case ContentRole.COMICSERIES_ARTIST_COLORIST:
       return "An individual who adds color to inked drawings."
-    case ContentRole.ComicseriesArtistLetterer:
+    case ContentRole.COMICSERIES_ARTIST_LETTERER:
       return "An individual who adds lettering, including speech balloons and sound effects"
-    case ContentRole.ComicseriesWriter:
+    case ContentRole.COMICSERIES_WRITER:
       return "An individual who writes the story or dialogue for the comic."
-    case ContentRole.ComicseriesProducer:
+    case ContentRole.COMICSERIES_PRODUCER:
       return "An individual who is responsible for helping craft the creative direction and overall final production."
-    case ContentRole.ComicseriesEditor:
+    case ContentRole.COMICSERIES_EDITOR:
       return "An individual who is responsible for reviewing and editing the comic to ensure the story and artwork are consistent, creative & engaging."
-    case ContentRole.ComicseriesTranslator:
+    case ContentRole.COMICSERIES_TRANSLATOR:
       return "An individual who converts dialog from one language to another"
   }
 }

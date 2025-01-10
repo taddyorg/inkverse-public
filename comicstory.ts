@@ -4,7 +4,7 @@ enum ComicStoryImageType {
   STORY = "story",
 }
 
-export const getStoryImageUrl = (storyImageAsString: string | undefined, token?: string): string | null => {
+export const getStoryImageUrl = (storyImageAsString: string | null | undefined, token?: string): string | null => {
   try {
     if (!storyImageAsString) { throw new Error('getStoryImageUrl - storyImageAsString is null'); }
   

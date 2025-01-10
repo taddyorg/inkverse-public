@@ -10,7 +10,7 @@ enum CreatorImageVariant {
   SMALL = "sm",
 }
 
-export const getAvatarImageUrl = (avatarImageAsString: string | undefined, variant: CreatorImageVariant = CreatorImageVariant.MEDIUM): string | null => {
+export const getAvatarImageUrl = (avatarImageAsString: string | null | undefined, variant: CreatorImageVariant = CreatorImageVariant.MEDIUM): string | null => {
   try {
     if (!avatarImageAsString) { throw new Error('getAvatarImageUrl - avatarImageAsString is null'); }
   

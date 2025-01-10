@@ -12,7 +12,7 @@ enum ComicSeriesImageVariant {
   SMALL = "sm",
 }
 
-export const getCoverImageUrl = (coverImageAsString: string | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
+export const getCoverImageUrl = (coverImageAsString: string | null | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
   try {
     if (!coverImageAsString) { throw new Error('getCoverImageUrl - coverImageAsString is null'); }
   
@@ -29,7 +29,7 @@ export const getCoverImageUrl = (coverImageAsString: string | undefined, variant
   }
 };
 
-export const getBannerImageUrl = (bannerImageAsString: string | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
+export const getBannerImageUrl = (bannerImageAsString: string | null | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
   try {
     if (!bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
   
@@ -46,7 +46,7 @@ export const getBannerImageUrl = (bannerImageAsString: string | undefined, varia
   }
 };
 
-export const getThumbnailImageUrl = (thumbnailImageAsString: string | undefined): string | null => {
+export const getThumbnailImageUrl = (thumbnailImageAsString: string | null | undefined): string | null => {
   try {
     if (!thumbnailImageAsString) { throw new Error('getThumbnailImageUrl - thumbnailImageAsString is null'); }
   

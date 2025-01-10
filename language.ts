@@ -3,12 +3,12 @@ import { Language } from '../shared/graphql/types.js';
 const allLanguagesSorted: Language[] = Object.values(Language).sort()
 
 const primaryLanguages: Language[] = [
-  Language.English,
-  Language.Spanish,
-  Language.French,
-  Language.Korean,
-  Language.Japanese,
-  Language.Chinese,
+  Language.ENGLISH,
+  Language.SPANISH,
+  Language.FRENCH,
+  Language.KOREAN,
+  Language.JAPANESE,
+  Language.CHINESE,
 ]
 
 const primaryLanguagesSet: Set<Language> = new Set(primaryLanguages)

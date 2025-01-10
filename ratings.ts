@@ -1,11 +1,11 @@
 import { ContentRating } from '../shared/graphql/types.js';
 
 export const allowedRatingsForType = new Set([
-  ContentRating.ComicseriesBaby,
-  ContentRating.ComicseriesKids,
-  ContentRating.ComicseriesTeens,
-  ContentRating.ComicseriesMatureTeens,
-  ContentRating.ComicseriesAdults,
+  ContentRating.COMICSERIES_BABY,
+  ContentRating.COMICSERIES_KIDS,
+  ContentRating.COMICSERIES_TEENS,
+  ContentRating.COMICSERIES_MATURE_TEENS,
+  ContentRating.COMICSERIES_ADULTS,
 ])
 
 const allRatingsSet: Set<ContentRating> = new Set(Object.values(ContentRating))
@@ -18,15 +18,15 @@ export function safeContentRating(rating: ContentRating | null): ContentRating |
 
 export function getPrettyRating(rating: ContentRating): string {
   switch(rating){
-    case ContentRating.ComicseriesBaby:
+    case ContentRating.COMICSERIES_BABY:
       return "Baby (Ages 0-5)"
-    case ContentRating.ComicseriesKids:
+    case ContentRating.COMICSERIES_KIDS:
       return "Kids (Ages 6+)"
-    case ContentRating.ComicseriesTeens:
+    case ContentRating.COMICSERIES_TEENS:
       return "Teens (Ages 13+)"
-    case ContentRating.ComicseriesMatureTeens:
+    case ContentRating.COMICSERIES_MATURE_TEENS:
       return "Mature Teens (Ages 15+)"
-    case ContentRating.ComicseriesAdults:
+    case ContentRating.COMICSERIES_ADULTS:
       return "Adults (Ages 18+)"
     default:
       return rating.split("_").map(word => { return word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()} ).slice(1).join(" ")
