@@ -10,7 +10,12 @@ enum CreatorImageVariant {
   SMALL = "sm",
 }
 
-export const getAvatarImageUrl = (avatarImageAsString: string | null | undefined, variant: CreatorImageVariant = CreatorImageVariant.MEDIUM): string | null => {
+type GetAvatarImageUrlProps = {
+  avatarImageAsString: string | null | undefined;
+  variant?: CreatorImageVariant;
+}
+
+export const getAvatarImageUrl = ({ avatarImageAsString, variant = CreatorImageVariant.MEDIUM }: GetAvatarImageUrlProps): string | undefined => {
   try {
     if (!avatarImageAsString) { throw new Error('getAvatarImageUrl - avatarImageAsString is null'); }
   
@@ -23,6 +28,6 @@ export const getAvatarImageUrl = (avatarImageAsString: string | null | undefined
     return baseUrl + imagePath;
   } catch (error) {
     console.error('Error parsing avatarImageAsString', error);
-    return null;
+    return undefined;
   }
 };

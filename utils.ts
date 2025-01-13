@@ -31,26 +31,26 @@ export enum InkverseUrlType {
 }
 
 type InkverseUrlParams = {
+  type: InkverseUrlType,
   shortUrl?: string | null,
   name?: string | null,
   uuid?: string | null
 }
 
 export function getInkverseUrl(
-  type: InkverseUrlType,
   params: InkverseUrlParams
-): string | null {
-  switch (type) {
+): string | undefined {
+  switch (params.type) {
     case InkverseUrlType.COMICSERIES:
-      if (!params.shortUrl) return null;
+      if (!params.shortUrl) return undefined;
       return `/comics/${params.shortUrl}`;
 
     case InkverseUrlType.CREATOR:
-      if (!params.shortUrl) return null;
+      if (!params.shortUrl) return undefined;
       return `/creators/${params.shortUrl}`;
 
     case InkverseUrlType.COMICISSUE:
-      if (!params.shortUrl || !params.name || !params.uuid) return null;
+      if (!params.shortUrl || !params.name || !params.uuid) return undefined;
       
       const slug = params.name
         .trim()

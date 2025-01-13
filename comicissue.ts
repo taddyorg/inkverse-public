@@ -1,5 +1,3 @@
-import type { ComicIssue } from '../shared/graphql/types.js';
-
 enum ComicIssueImageType {
   BANNER = "banner",
   THUMBNAIL = "thumbnail",
@@ -11,7 +9,12 @@ enum ComicIssueImageVariant {
   SMALL = "sm",
 }
 
-export const getBannerImageUrl = (bannerImageAsString: string | null | undefined, variant: ComicIssueImageVariant | undefined = ComicIssueImageVariant.MEDIUM): string | null => {
+type GetBannerImageUrlProps = {
+  bannerImageAsString: string | null | undefined;
+  variant?: ComicIssueImageVariant;
+}
+
+export const getBannerImageUrl = ({ bannerImageAsString, variant = ComicIssueImageVariant.MEDIUM }: GetBannerImageUrlProps): string | undefined => {
   try {
     if (!bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
 
@@ -25,11 +28,15 @@ export const getBannerImageUrl = (bannerImageAsString: string | null | undefined
     return baseUrl + imagePath;
   } catch (error) {
     console.error('Error parsing bannerImageAsString', error);
-    return null;
+    return undefined;
   }
 };
 
-export const getThumbnailImageUrl = (thumbnailImageAsString: string | null | undefined): string | null => {
+type GetThumbnailImageUrlProps = {
+  thumbnailImageAsString: string | null | undefined;
+}
+
+export const getThumbnailImageUrl = ({ thumbnailImageAsString }: GetThumbnailImageUrlProps): string | undefined => {
   try {
     if (!thumbnailImageAsString) { throw new Error('getThumbnailImageUrl - thumbnailImageAsString is null'); }
 
@@ -43,6 +50,6 @@ export const getThumbnailImageUrl = (thumbnailImageAsString: string | null | und
     return baseUrl + imagePath;
   } catch (error) {
     console.error('Error parsing thumbnailImageAsString', error);
-    return null;
+    return undefined;
   }
 };

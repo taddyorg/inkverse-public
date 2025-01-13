@@ -1,10 +1,13 @@
-import type { ComicStory } from '../shared/graphql/types.js';
-
 enum ComicStoryImageType {
   STORY = "story",
 }
 
-export const getStoryImageUrl = (storyImageAsString: string | null | undefined, token?: string): string | null => {
+type GetStoryImageUrlProps = {
+  storyImageAsString: string | null | undefined;
+  token?: string;
+}
+
+export const getStoryImageUrl = ({ storyImageAsString, token }: GetStoryImageUrlProps): string | undefined => {
   try {
     if (!storyImageAsString) { throw new Error('getStoryImageUrl - storyImageAsString is null'); }
   
@@ -17,6 +20,6 @@ export const getStoryImageUrl = (storyImageAsString: string | null | undefined, 
     return baseUrl + imagePath + (token ? `?token=${token}` : '');
   } catch (error) {
     console.error('Error parsing storyImageAsString', error);
-    return null;
+    return undefined;
   }
 };

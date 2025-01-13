@@ -1,5 +1,3 @@
-import type { ComicSeries } from '../shared/graphql/types.js';
-
 enum ComicSeriesImageType {
   COVER = "cover",
   BANNER = "banner",
@@ -12,7 +10,12 @@ enum ComicSeriesImageVariant {
   SMALL = "sm",
 }
 
-export const getCoverImageUrl = (coverImageAsString: string | null | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
+type GetCoverImageUrlProps = {
+  coverImageAsString: string | null | undefined;
+  variant?: ComicSeriesImageVariant;
+}
+
+export const getCoverImageUrl = ({ coverImageAsString, variant = ComicSeriesImageVariant.MEDIUM }: GetCoverImageUrlProps): string | undefined => {
   try {
     if (!coverImageAsString) { throw new Error('getCoverImageUrl - coverImageAsString is null'); }
   
@@ -25,11 +28,16 @@ export const getCoverImageUrl = (coverImageAsString: string | null | undefined, 
     return baseUrl + imagePath;
   } catch (error) {
     console.error('Error parsing coverImageAsString', error);
-    return null;
+    return undefined;
   }
 };
 
-export const getBannerImageUrl = (bannerImageAsString: string | null | undefined, variant: ComicSeriesImageVariant | undefined = ComicSeriesImageVariant.MEDIUM): string | null => {
+type GetBannerImageUrlProps = {
+  bannerImageAsString: string | null | undefined;
+  variant?: ComicSeriesImageVariant;
+}
+
+export const getBannerImageUrl = ({ bannerImageAsString, variant = ComicSeriesImageVariant.MEDIUM }: GetBannerImageUrlProps): string | undefined => {
   try {
     if (!bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
   
@@ -42,11 +50,15 @@ export const getBannerImageUrl = (bannerImageAsString: string | null | undefined
     return baseUrl + imagePath;
   } catch (error) {
     console.error('Error parsing bannerImageAsString', error);
-    return null;
+    return undefined;
   }
 };
 
-export const getThumbnailImageUrl = (thumbnailImageAsString: string | null | undefined): string | null => {
+type GetThumbnailImageUrlProps = {
+  thumbnailImageAsString: string | null | undefined;
+}
+
+export const getThumbnailImageUrl = ({ thumbnailImageAsString }: GetThumbnailImageUrlProps): string | undefined => {
   try {
     if (!thumbnailImageAsString) { throw new Error('getThumbnailImageUrl - thumbnailImageAsString is null'); }
   
@@ -59,6 +71,6 @@ export const getThumbnailImageUrl = (thumbnailImageAsString: string | null | und
     return baseUrl + imagePath;
   } catch (error) {
     console.error('Error parsing thumbnailImageAsString', error);
-    return null;
+    return undefined;
   }
 };
