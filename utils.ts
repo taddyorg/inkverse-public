@@ -60,9 +60,7 @@ export function getInkverseUrl(
         .slice(0, 80)
         .toLowerCase();
 
-      const safeUuid = params.uuid.replace(/-/g, '');
-
-      return `/comics/${params.shortUrl}/${slug}-${safeUuid}`;
+      return `/comics/${params.shortUrl}/${slug}-${params.uuid}`;
 
   default:
     throw new Error('getInkverseLink - type is invalid');
