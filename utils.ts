@@ -27,14 +27,25 @@ export const arrayToObject = <T extends Record<K, PropertyKey>, K extends keyof 
 export enum InkverseUrlType {
   COMICSERIES = 'comicseries',
   COMICISSUE = 'comicissue',
-  CREATOR = 'creator'
+  CREATOR = 'creator',
+  LIST = 'list'
 }
 
 type InkverseUrlParams = {
   type: InkverseUrlType,
   shortUrl?: string | null,
   name?: string | null,
-  uuid?: string | null
+  uuid?: string | null,
+  id?: string | null
+}
+
+function safeName(name: string | null): string {
+  return name?.trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-zA-Z0-9-_]/g, '')
+    .replace(/-+/g, '-')
+    .slice(0, 80)
+    .toLowerCase() || '';
 }
 
 export function getInkverseUrl(
@@ -51,16 +62,11 @@ export function getInkverseUrl(
 
     case InkverseUrlType.COMICISSUE:
       if (!params.shortUrl || !params.name || !params.uuid) return undefined;
-      
-      const slug = params.name
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/[^a-zA-Z0-9-_]/g, '')
-        .replace(/-+/g, '-')
-        .slice(0, 80)
-        .toLowerCase();
+      return `/comics/${params.shortUrl}/${safeName(params.name)}-${params.uuid}`;
 
-      return `/comics/${params.shortUrl}/${slug}-${params.uuid}`;
+    case InkverseUrlType.LIST:
+      if (!params.id || !params.name) return undefined;
+      return `/lists/id${params.id}-${safeName(params.name)}`;
 
   default:
     throw new Error('getInkverseLink - type is invalid');

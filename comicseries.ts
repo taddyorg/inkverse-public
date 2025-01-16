@@ -4,7 +4,7 @@ enum ComicSeriesImageType {
   THUMBNAIL = "thumbnail",
 }
 
-enum ComicSeriesImageVariant {
+export enum ComicSeriesImageVariant {
   LARGE = "lg",
   MEDIUM = "md",
   SMALL = "sm",
