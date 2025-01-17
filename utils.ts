@@ -28,7 +28,8 @@ export enum InkverseUrlType {
   COMICSERIES = 'comicseries',
   COMICISSUE = 'comicissue',
   CREATOR = 'creator',
-  LIST = 'list'
+  LIST = 'list',
+  SEARCH = 'search'
 }
 
 type InkverseUrlParams = {
@@ -36,7 +37,9 @@ type InkverseUrlParams = {
   shortUrl?: string | null,
   name?: string | null,
   uuid?: string | null,
-  id?: string | null
+  id?: string | null,
+  term?: string | null,
+  types?: string[] | null
 }
 
 function safeName(name: string | null): string {
@@ -67,6 +70,10 @@ export function getInkverseUrl(
     case InkverseUrlType.LIST:
       if (!params.id || !params.name) return undefined;
       return `/lists/id${params.id}-${safeName(params.name)}`;
+
+    case InkverseUrlType.SEARCH:
+      if (!params.term || !params.types) return undefined;
+      return `/search/${params.term}/${params.types.join(',')}`;
 
   default:
     throw new Error('getInkverseLink - type is invalid');
