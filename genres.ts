@@ -1,4 +1,4 @@
-import { Genre } from '../shared/graphql/types.js';
+import { Genre } from '../shared/graphql/types';
 
 export function getPrettyGenre(genre: Genre): string {
   switch(genre){
