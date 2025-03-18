@@ -24,15 +24,10 @@ export const arrayToObject = <T extends Record<K, PropertyKey>, K extends keyof 
     return obj;
 }, {} as Record<T[K], T>);
 
-export enum InkverseUrlType {
-  COMICSERIES = 'comicseries',
-  COMICISSUE = 'comicissue',
-  CREATOR = 'creator',
-  LIST = 'list',
-  SEARCH = 'search'
-}
 
-type InkverseUrlParams = {
+export type InkverseUrlType = 'comicseries' | 'comicissue' | 'creator' | 'list' | 'search';
+
+export type InkverseUrlParams = {
   type: InkverseUrlType,
   shortUrl?: string | null,
   name?: string | null,
@@ -55,23 +50,23 @@ export function getInkverseUrl(
   params: InkverseUrlParams
 ): string | undefined {
   switch (params.type) {
-    case InkverseUrlType.COMICSERIES:
+    case 'comicseries':
       if (!params.shortUrl) return undefined;
       return `/comics/${params.shortUrl}`;
 
-    case InkverseUrlType.CREATOR:
+    case 'creator':
       if (!params.shortUrl) return undefined;
       return `/creators/${params.shortUrl}`;
 
-    case InkverseUrlType.COMICISSUE:
+    case 'comicissue':
       if (!params.shortUrl || !params.name || !params.uuid) return undefined;
       return `/comics/${params.shortUrl}/${safeName(params.name)}-${params.uuid}`;
 
-    case InkverseUrlType.LIST:
+    case 'list':
       if (!params.id || !params.name) return undefined;
       return `/lists/id${params.id}-${safeName(params.name)}`;
 
-    case InkverseUrlType.SEARCH:
+    case 'search':
       if (!params.term || !params.types) return undefined;
       return `/search/${params.term}/${params.types.join(',')}`;
 
