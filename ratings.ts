@@ -1,4 +1,4 @@
-import { ContentRating } from '../shared/graphql/types.js';
+import { ContentRating } from '../shared/graphql/types.ts';
 
 export const allowedRatingsForType = new Set([
   ContentRating.COMICSERIES_BABY,

@@ -1,4 +1,4 @@
-import { ContentRole } from '../shared/graphql/types.js';
+import { ContentRole } from '../shared/graphql/types.ts';
 
 const allContentRolesSet = new Set(Object.values(ContentRole));
 

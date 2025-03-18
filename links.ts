@@ -1,4 +1,4 @@
-import { LinkType } from '../shared/graphql/types.js';
+import { LinkType } from '../shared/graphql/types.ts';
 
 const HTTPS: string = "https://";
 

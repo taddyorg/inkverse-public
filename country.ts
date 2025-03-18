@@ -1,4 +1,4 @@
-import { Country, Language } from '../shared/graphql/types.js';
+import { Country, Language } from '../shared/graphql/types.ts';
 
 export const rawAllCountries: Country[] = Object.values(Country);
 
