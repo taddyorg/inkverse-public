@@ -1,5 +1,3 @@
-import type { Creator } from '../shared/graphql/types.ts';
-
 enum CreatorImageType {
   AVATAR = "avatar",
 }

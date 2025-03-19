@@ -1,4 +1,4 @@
-import { SeriesStatus } from '../shared/graphql/types.ts';
+import { SeriesStatus } from '../shared/graphql/types.js';
 
 const allSeriesStatusSet = new Set(Object.values(SeriesStatus));
 

@@ -1,4 +1,4 @@
-import { ComicSeriesType } from '../shared/graphql/types.ts';
+import { ComicSeriesType } from '../shared/graphql/types.js';
 
 const allSeriesTypeSet = new Set(Object.values(ComicSeriesType));
 

@@ -1,4 +1,4 @@
-import { Language } from '../shared/graphql/types.ts';
+import { Language } from '../shared/graphql/types.js';
 
 const allLanguagesSorted: Language[] = Object.values(Language).sort()
 

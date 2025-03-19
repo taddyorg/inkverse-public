@@ -1,4 +1,4 @@
-import { ComicSeriesLayoutType } from '../shared/graphql/types.ts';
+import { ComicSeriesLayoutType } from '../shared/graphql/types.js';
 
 const allLayoutTypeSet = new Set(Object.values(ComicSeriesLayoutType));
 
