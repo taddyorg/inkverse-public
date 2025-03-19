@@ -5,14 +5,35 @@ export const typePolicies = {
   ComicIssue: {
     keyFields: ["uuid"]
   },
+  ComicIssueForSeries: {
+    keyFields: ["seriesUuid"]
+  },
   ComicStory: {
     keyFields: ["uuid"]
   },
   Creator: {
     keyFields: ["uuid"]
   },
-  SearchResult: {
+  CreatorContent: {
+    keyFields: ["uuid"]
+  },
+  CreatorLinkDetails: {
+    keyFields: ["creatorUuid", "url"]
+  },
+  HomeScreenComicSeries: {
+    keyFields: ["id"]
+  },
+  HomeScreenCuratedList: {
+    keyFields: ["id"]
+  },
+  Documentation: {
+    keyFields: ["id"]
+  },
+  SearchResults: {
     keyFields: ["searchId"]
+  },
+  List: {
+    keyFields: ["id"]
   },
   User: {
     keyFields: ["id"]

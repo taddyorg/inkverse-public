@@ -4,10 +4,12 @@ enum ComicSeriesImageType {
   THUMBNAIL = "thumbnail",
 }
 
-export enum ComicSeriesImageVariant {
-  LARGE = "lg",
-  MEDIUM = "md",
-  SMALL = "sm",
+type ComicSeriesImageVariant = 'large' | 'medium' | 'small';
+
+const variantMap: Record<ComicSeriesImageVariant, string> = {
+  large: 'lg',
+  medium: 'md',
+  small: 'sm',
 }
 
 type GetCoverImageUrlProps = {
@@ -15,13 +17,13 @@ type GetCoverImageUrlProps = {
   variant?: ComicSeriesImageVariant;
 }
 
-export const getCoverImageUrl = ({ coverImageAsString, variant = ComicSeriesImageVariant.MEDIUM }: GetCoverImageUrlProps): string | undefined => {
+export const getCoverImageUrl = ({ coverImageAsString, variant = 'medium' }: GetCoverImageUrlProps): string | undefined => {
   try {
     if (!coverImageAsString) { throw new Error('getCoverImageUrl - coverImageAsString is null'); }
   
     const coverImage = JSON.parse(coverImageAsString) as Record<string, string>;
     const baseUrl = coverImage['base_url'];
-    const imagePath = coverImage[ComicSeriesImageType.COVER + `_${variant}`];
+    const imagePath = coverImage[ComicSeriesImageType.COVER + `_${variantMap[variant]}`];
 
     if (!baseUrl || !imagePath) { throw new Error('getCoverImageUrl - baseUrl or imagePath is null'); }
 
@@ -37,13 +39,13 @@ type GetBannerImageUrlProps = {
   variant?: ComicSeriesImageVariant;
 }
 
-export const getBannerImageUrl = ({ bannerImageAsString, variant = ComicSeriesImageVariant.MEDIUM }: GetBannerImageUrlProps): string | undefined => {
+export const getBannerImageUrl = ({ bannerImageAsString, variant = 'medium' }: GetBannerImageUrlProps): string | undefined => {
   try {
     if (!bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
   
     const bannerImage = JSON.parse(bannerImageAsString) as Record<string, string>;
     const baseUrl = bannerImage['base_url'];
-    const imagePath = bannerImage[ComicSeriesImageType.BANNER + `_${variant}`];
+    const imagePath = bannerImage[ComicSeriesImageType.BANNER + `_${variantMap[variant]}`];
 
     if (!baseUrl || !imagePath) { throw new Error('getBannerImageUrl - baseUrl or imagePath is null'); }
 

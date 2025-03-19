@@ -3,10 +3,12 @@ enum ComicIssueImageType {
   THUMBNAIL = "thumbnail",
 }
 
-enum ComicIssueImageVariant {
-  LARGE = "lg",
-  MEDIUM = "md",
-  SMALL = "sm",
+type ComicIssueImageVariant = 'large' | 'medium' | 'small';
+
+const variantMap: Record<ComicIssueImageVariant, string> = {
+  large: 'lg',
+  medium: 'md',
+  small: 'sm',
 }
 
 type GetBannerImageUrlProps = {
@@ -14,14 +16,14 @@ type GetBannerImageUrlProps = {
   variant?: ComicIssueImageVariant;
 }
 
-export const getBannerImageUrl = ({ bannerImageAsString, variant = ComicIssueImageVariant.MEDIUM }: GetBannerImageUrlProps): string | undefined => {
+export const getBannerImageUrl = ({ bannerImageAsString, variant = 'medium' }: GetBannerImageUrlProps): string | undefined => {
   try {
     if (!bannerImageAsString) { throw new Error('getBannerImageUrl - bannerImageAsString is null'); }
 
     const bannerImage = JSON.parse(bannerImageAsString) as Record<string, string>;
 
     const baseUrl = bannerImage['base_url'];
-    const imagePath = bannerImage[ComicIssueImageType.BANNER + `_${variant}`];
+    const imagePath = bannerImage[ComicIssueImageType.BANNER + `_${variantMap[variant]}`];
 
     if (!baseUrl || !imagePath) { throw new Error('getBannerImageUrl - baseUrl or imagePath is null'); }
 
