@@ -25,7 +25,7 @@ export const arrayToObject = <T extends Record<K, PropertyKey>, K extends keyof 
 }, {} as Record<T[K], T>);
 
 
-export type InkverseUrlType = 'comicseries' | 'comicissue' | 'creator' | 'list' | 'search';
+export type InkverseUrlType = 'comicseries' | 'comicissue' | 'creator' | 'list' | 'search' | 'share-inkverse';
 
 export type InkverseUrlParams = {
   type: InkverseUrlType,
@@ -69,6 +69,9 @@ export function getInkverseUrl(
     case 'search':
       if (!params.term || !params.types) return undefined;
       return `/search/${params.term}/${params.types.join(',')}`;
+    
+    case 'share-inkverse':
+      return '/';
 
   default:
     throw new Error('getInkverseLink - type is invalid');
