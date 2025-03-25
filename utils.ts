@@ -25,7 +25,7 @@ export const arrayToObject = <T extends Record<K, PropertyKey>, K extends keyof 
 }, {} as Record<T[K], T>);
 
 
-export type InkverseUrlType = 'comicseries' | 'comicissue' | 'creator' | 'list' | 'search' | 'share-inkverse';
+export type InkverseUrlType = 'comicseries' | 'comicissue' | 'creator' | 'list' | 'search' | 'share-inkverse' | 'tag' | 'genre';
 
 export type InkverseUrlParams = {
   type: InkverseUrlType,
@@ -69,6 +69,14 @@ export function getInkverseUrl(
     case 'search':
       if (!params.term || !params.types) return undefined;
       return `/search/${params.term}/${params.types.join(',')}`;
+
+    case 'tag':
+      if (!params.name) return undefined;
+      return `/tagged/${params.name}`;
+
+    case 'genre':
+      if (!params.name) return undefined;
+      return `/genre/${params.name}`;
     
     case 'share-inkverse':
       return '/';
