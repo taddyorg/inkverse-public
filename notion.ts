@@ -5,7 +5,7 @@ export const NotionPage = {
   BLOG: { id: "fc0e58aacbb04e74b7172977be60e72e", path: "/blog" },
   APP_UPDATES: { id: "5c29ee8546e142b1b72de04eae36960d", path: "/updates" },
   APP_UPDATES_NEW_APP_LAUNCHED: { id: "1b9332bebe3f80cd8437e457f71ebbf0", path: "/updates/new-app-launched" },
-  APP_UPDATES_ROADMAP: { id: "1bc332bebe3f80ec8bc2d14b3ff5ceec", path: "/updates/roadmap" },
+  APP_UPDATES_ROADMAP: { id: "1bc332bebe3f80ec8bc2d14b3ff5ceec", path: "/updates/our-roadmap" },
   BEST_VAMPIRE_WEBTOONS: { id: "8cbd0fd824bd4dafbc93a2741c61e0b3", path: "/blog/best-vampire-webtoons" },
   BEST_ROMANCE_WEBTOONS: { id: "59ad2f983ac1454f832db7756da4a5ef", path: "/blog/best-romance-webtoons-to-read" },
   BEST_SUPERNATURAL_WEBTOONS: { id: "ce18c8b2fa3c4af98744adbbf878ce03", path: "/blog/best-supernatural-webtoons-to-read" },
