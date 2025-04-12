@@ -18,6 +18,7 @@ export const NotionPage = {
   BRAND_KIT: { id: "a900cc4737e045c7aec5312df1ce741a", path: "/brand-kit" },
   ABOUT_US: { id: "334d2f916f2948d5b9e470dc0473527b", path: "/about-us" },
   OPEN_SOURCE: { id: "12b332bebe3f80f9a197eb8e60525e72", path: "/open-source" },
+  OPEN_SOURCE_FORK_INKVERSE: { id: "12b332bebe3f80cab980f7a0ead01c2b", path: "/open-source/fork-inkverse" },
   TERMS_OF_SERVICE: { id: "ce1fc05e5ae3477284ebda8cbe8f506e", path: "/terms-of-service" },
   PRIVACY_POLICY: { id: "5ad172e9fc834d1bb5a61b030ef5cd82", path: "/terms-of-service/privacy-policy" },
   CONTENT_POLICY: { id: "2705be9449fa410480224a7d2b23d61c", path: "/terms-of-service/content-policy" },
@@ -50,6 +51,9 @@ export const additionalInfoForNotionId: { [key: string]: BlogPost } = {
     priority: '0.8',
   },
   [NotionPage.OPEN_SOURCE.path]: {
+    priority: '0.8',
+  },
+  [NotionPage.OPEN_SOURCE_FORK_INKVERSE.path]: {
     priority: '0.8',
   },
   [NotionPage.BLOG.path]: {
