@@ -149,13 +149,13 @@ export const additionalInfoForNotionId: { [key: string]: BlogPost } = {
   },
   [NotionPage.BEST_WEBTOONS_OF_ALL_TIME.path]: {
     priority: '0.9',
-    title: "The 10 Best Webtoons Of All Time",
-    description: "There are so many webtoons that sometimes it can be hard to pick what to read next. So, we've rounded up 10 of the best webtoons of all time to make your choice easier!",
+    title: "20 Best Webtoons Of All Time",
+    description: "There are so many webtoons that sometimes it can be hard to pick what to read next. So, we've rounded up 20 of the most popular webtoons of all time to make your choice easier!",
     url: 'https://inkverse.co/blog/best-webtoons-of-all-time',
     imageURL: 'https://ink0.inkverse.co/blog/best-webtoons-images/best-webtoons-banner.webp',
     author: {
-      name: 'Eleanor Tremeer',
-      url: 'https://twitter.com/extratremeerial',
+      name: 'Daniel Mathews',
+      url: 'https://dmathewwws.com',
     }
   },
   [NotionPage.APP_UPDATES.path]: {
